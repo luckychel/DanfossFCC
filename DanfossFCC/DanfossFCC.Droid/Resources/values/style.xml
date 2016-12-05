@@ -1,0 +1,10 @@
+<resources>
+  <style name="MyTheme.Base" parent="@android:style/Theme.Material.Light">
+  </style>
+  <style name="MyTheme" parent="MyTheme.Base">
+  </style>
+  <style name="MyTheme.Splash" parent ="@android:style/Theme.Material.Light">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>  
+  </style>
+</resources>

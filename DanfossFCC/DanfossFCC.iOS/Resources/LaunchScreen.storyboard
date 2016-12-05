@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="4">
+            <objects>
+                <viewController id="5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2"/>
+                        <viewControllerLayoutGuide type="bottom" id="3"/>
+                    </layoutGuides>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="17" key="view" image="splash_logo.png" highlightedImage="splash_logo.png">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
+                        <color key="tintColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
+                    </imageView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="-315"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="www/images/ajax-line.gif" width="128" height="15"/>
+        <image name="www/images/Danfoss.gif" width="477" height="185"/>
+        <image name="www/images/DanfossLogoRed.gif" width="280" height="112"/>
+        <image name="www/images/hint.gif" width="10" height="10"/>
+        <image name="www/images/ico_bad.gif" width="16" height="10"/>
+        <image name="www/images/ico_normal.gif" width="16" height="10"/>
+        <image name="www/images/ico_warn.gif" width="16" height="10"/>
+        <image name="www/jquery/images/ajax-loader.gif" width="46" height="46"/>
+        <image name="www/jquery/images/ajax-loader.png" width="35" height="35"/>
+        <image name="www/jquery/images/icons-18-black.png" width="776" height="18"/>
+        <image name="www/jquery/images/icons-18-white.png" width="776" height="18"/>
+        <image name="www/jquery/images/icons-36-black.png" width="1548" height="36"/>
+        <image name="www/jquery/images/icons-36-white.png" width="1548" height="36"/>
+        <image name="Icon-App-20x20.png" width="20" height="20"/>
+        <image name="Icon-App-29x29.png" width="29" height="29"/>
+        <image name="Icon-App-40x40.png" width="40" height="40"/>
+        <image name="Icon-App-57x57.png" width="57" height="57"/>
+        <image name="Icon-App-60x60.png" width="60" height="60"/>
+        <image name="Icon-App-72x72.png" width="72" height="72"/>
+        <image name="Icon-App-76x76.png" width="76" height="76"/>
+        <image name="Icon-App-83.5x83.5.png" width="83.5" height="83.5"/>
+        <image name="Icon-Small-50x50.png" width="50" height="50"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="iTunesArtwork.png" width="512" height="512"/>
+        <image name="splash_logo.png" width="455" height="258"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

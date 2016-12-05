@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<body style="-moz-user-select: none;-webkit-user-select: none;padding-top:20px;" onselectstart='return false;'>
+  <settings>
+    <setting id="setting_1" default="1" mobile="1" viewBody="view_0" view="view_2" />
+  </settings>
+  <titles>
+    <title type="header">&lt;table cellspading=0 cellspacing=0 style='padding:0px;margin:0px' &gt;&lt;tr&gt;&lt;td width=100% style='border-bottom:solid 1px black;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#111;font-size:20px;text-shadow:0 -1px 1px grey;' &gt;Преобразователи частоты&lt;/td&gt;&lt;td style='border-bottom:solid 1px black;' &gt;&lt;img height=24 width=61 src='images/Danfoss.gif' /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</title>
+  </titles>
+  <headers>
+      <header id="fldUses"     ref="uses"     title="Применение:"                                       visible="0" type="string"  />
+      <header id="fldPower"    ref="power"    title="Мощность, напряжение:"                             visible="1" type="string" />
+      <header id="fldSeriesID" ref="seriesID" title="Кодовый номер для заказа:"                         visible="1" type="string"  />
+      <header id="fldPanelID"  ref="panelID"  title="Рекомендуется заказать панель оператора:"          visible="1" type="string"  />
+  </headers>
+  <controls>
+    <control id="uses" type="select" valueType="string" title="Применение" group="1" hint="1" sort="0" refill="0">
+      <hint>
+<![CDATA[<h5><b>Внимание!</b> <font style='font-weight:normal'>Для подбора преобразователя частоты необходимо в предлагаемых списках выбрать:</font></h5>
+<b style='font-size:26px'>&nbsp;-&nbsp;</b><b style='white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#333;font-size:16px;text-shadow:0 -1px 1px #888;'>Применение</b><br/><font style='font-weigth:normal' color=gray>Выбор применения определяет серию преобразователя, которая подойдет для оптимального использования.</font>
+<b style='font-size:26px'>&nbsp;-&nbsp;</b><b style='white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#333;font-size:16px;text-shadow:0 -1px 1px #888;'>Мощность, Напряжение, Ток</b><br/><font style='font-weigth:normal' color=gray>Преобразователь частоты выбирается исходя из номинального тока двигателя. Выберите сначала применение, а потом диапазон токов, в который укладывается ток двигателя вашего механизма, указанный на шильдике. Также необходимо выбрать какое подходит напряжение – 1 фаза 220В или 3 фазы 380В.</font>]]>
+      </hint>
+    </control>
+    <control id="power" type="select" valueType="string"  title="Мощность, Напряжение, Ток" group="1" hint="1"  sort="1" refill="1">
+      <hint>
+<![CDATA[<h5><b>Внимание!</b> <font style='font-weight:normal'>Для подбора преобразователя частоты необходимо в предлагаемых списках выбрать:</font></h5>
+<b style='font-size:26px'>&nbsp;-&nbsp;</b><b style='white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#333;font-size:16px;text-shadow:0 -1px 1px #888;'>Применение</b><br/><font style='font-weigth:normal' color=gray>Выбор применения определяет серию преобразователя, которая подойдет для оптимального использования.</font>
+<b style='font-size:26px'>&nbsp;-&nbsp;</b><b style='white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#333;font-size:16px;text-shadow:0 -1px 1px #888;'>Мощность, Напряжение, Ток</b><br/><font style='font-weigth:normal' color=gray>Преобразователь частоты выбирается исходя из номинального тока двигателя. Выберите сначала применение, а потом диапазон токов, в который укладывается ток двигателя вашего механизма, указанный на шильдике. Также необходимо выбрать какое подходит напряжение – 1 фаза 220В или 3 фазы 380В.</font>]]>
+</hint>
+    </control>
+  </controls>
+  <filters>
+    <filter id="uses"  type="equal" c1="uses" field="uses" group="1" />
+    <filter id="power" type="equal" c1="power" field="power" group="1" />
+  </filters>
+  <views>
+    <view id="view_0" type="body">
+<![CDATA[
+<div data-role="page"  data-theme="c" id="one" >
+    <div data-theme="f"  data-role="header" onselectstart='return false;'>
+        <div  id="divTitle1"></div>
+    </div>
+    <div data-role="content" data-inline="true" data-theme="c" style='margin:0px;padding:10px;' onselectstart='return false;'>	
+        <div id="divControls"></div>
+        <div id="divData"></div>
+    </div>
+</div>
+<div data-role="page" id="two" data-theme="c"> 
+    <div data-theme="f" data-role="header" onselectstart='return false;'>
+        <div id="divTitle2"></div>
+    </div>
+    <div data-role="content" data-inline="true" data-theme="c" style='margin:2px;padding:2px;' onselectstart='return false;'>	
+       <div id="results_loader"><table width=100%><tr><td style='text-align:center' width=0%><img src = "images/ajax-line.gif" /></td></tr><tr><td ><h5>Подождите. Идет проверка наличия оборудование на складе Данфосс</h5></td></tr></table></div>
+       <div id="query_results" style='display:none'></div>	
+       <a href="#one" id ="back" data-theme="b" data-transition="none" data-role="button" style='font-size:small' data-icon="back">Назад к результатам подбора</a>
+       <a href="#two" id="btnTwo" name="btnTwo" data-transition="none" data-theme="b" data-role="button" style='display:none'>two</a>
+    </div>
+</div>
+<div data-role="page" id="three" data-theme="c"> 
+    <div data-theme="f" data-role="header" onselectstart='return false;'>
+        <div id="divTitle3"></div>
+    </div>
+    <div data-role="content" data-inline="true" data-theme="c" style='margin:2px;padding:2px;' onselectstart='return false;'>	
+        <h3 style='white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#111;font-size:22px;text-shadow:0 -1px 1px #000;'>Ваш запрос отправлен</h3>
+        <h4>Для получения информации о состоянии запроса обращайтесь <a style='white-space:nowrap'  href="mailto:tss@danfoss.ru">tss@danfoss.ru</a> или звоните по телефону в Москве <a style='white-space:nowrap' href="tel:+74957925757">(495)&nbsp;792-57-57</a></h4>
+        <a href="#one" id="btnBack" data-theme="b" data-transition="none" data-role="button" style='font-size:small' data-icon="back">Назад к результатам подбора</a>
+        <a href="#one" id="btnOne" name="btnOne" data-transition="none" data-role="button" style='display:none'>back</a>
+    </div>
+</div>
+<div data-role="page" id="popup" > 
+	<div data-theme="b"  data-role="header"  onselectstart='return false;' > 
+	    <h2><label id="popupheader"></label></h2>
+	</div>
+	<div data-role="content" data-theme="d" onselectstart='return false;' > 	
+        <div id="popupdata"></div>
+	</div>
+</div>
+]]>
+    </view>
+    <view id="view_2" type="template" default="1" defaultView="1">
+    <![CDATA[
+      <h3 style='text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#111;font-size:22px;text-shadow:0 -1px 1px #000;'>Результат подбора</h3>
+      <h5 id="divView_power"   ><label for="viewV_power" id="viewT_power"></label>&nbsp;<label style='white-space:nowrap;font-weight:bold' id="viewV_power"></label></h5>
+      <h4 id="divView_seriesID"> <label data-theme="c"  for="viewV_seriesID" id="viewT_seriesID"></label><label style='text-decoration:none;white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#111;font-size:22px;text-shadow:0 -1px 1px #000;' id="viewV_seriesID"></label></h4>
+      <h5 id="divView_panelID" ><label for="viewV_panelID" id="viewT_panelID"></label>&nbsp;<label style='white-space:nowrap;font-weight:bold' id="viewV_panelID"></label></h5>
+      <a href="#two" id="btnStock" onclick="btnStock_clicked" data-theme="b" data-transition="none" data-role="button" style='font-size:small;display:none' data-icon="forward">Цена и наличие на складе</a>
+      <div  id="infoStock" class="ui-bar ui-bar-b" style='display:none;text-align:center;'>Узнайте цену и сроки поставки по телефону <a style='white-space:nowrap' data-role="none" href="tel:+74957925757">(495)&nbsp;792-57-57</a></div> 
+     ]]>
+    </view>
+    <view id="viewResult" type="template" default="1" defaultView="1">
+     <![CDATA[
+      <fieldset class="ui-grid-c" style="padding:10px;">
+      <div style="width:5%;padding:0px;margin:0px;" class="ui-block-a">&nbsp;</div>
+      <div id="divOrder" style="width:90%;padding:0px;margin:0px;" class="ui-block-b" data-collapsed="true" data-role="collapsible" data-theme="e" data-mini="false" data-content-theme="b">
+           <h5><center>Оформить запрос поставки</center></h5>
+            <table width=100% cellspading=0 cellspacing=0 style='padding:0px;margin:0px;'>
+            <tr>
+            <td colspan=2 style="white-space:nowrap"><input style="white-space:nowrap" type="range" maxlength="2" data-track-theme="d" name="slider" id="slider" value="1" min="1" max="10" data-highlight="true"  /></td>
+            </tr>
+            <tr>
+            <td style="white-space:nowrap"><label for="username" data-mini="true"><font color=red>*</font>Имя:</label></td>
+            <td width=100% style="white-space:nowrap"><input type="text"    data-mini="true" name="username" id="username" value=""  /></td>
+            </tr>
+            <tr>
+            <td style="white-space:nowrap"><label for="tel"  data-mini="true"><font color=red>*</font>Тел.:</label></td>
+            <td style="white-space:nowrap"><input type="tel" data-mini="true" name="phonenumber" id="phonenumber" value=""  /></td>
+            </tr>
+            <tr>
+            <td style="white-space:nowrap"><label for="email"  data-mini="true">Емайл:</label></td>
+            <td style="white-space:nowrap"><input type="email" data-mini="true" name="emailaddres" id="emailaddres" value=""  /></td>
+            </tr>
+            <tr>
+            <td>&nbsp;</td><td style="text-align"><a href="javascript:;"  id="btnOrder" data-theme="b" data-transition="none" data-role="button" data-mini="true" data-inline="false" data-icon="check">Отправить запрос</a>
+            <a href="#three"  id="btnThree" data-transition="none" data-role="button" style='display:none' >ok</a>
+            <a href="#popup"  id="btnPopup" data-role="button" data-rel="dialog" data-placeholder="false" data-transition="none" style='display:none' >ok</a>
+            </td>
+            </tr>
+            </table>
+      </div>
+      <div style="width:5%;padding:0px;margin:0px;" class="ui-block-c">&nbsp;</div>
+      </fieldset>
+      <h3 style='text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#111;font-size:22px;text-shadow:0 -1px 1px #000;'>Результат проверки</h3>
+      <h4 style="white-space:nowrap;font-size:22px;font-weight:bold"><label style='text-decoration:none;white-space:nowrap;text-align:center;vertical-align:middle;font-family:Helvetica,Arial,sans-serif;font-weight:bold;color:#111;font-size:22px;text-shadow:0 -1px 1px #000;' id="viewR_material"></label></h4>
+      <h5 style="white-space:nowrap;font-size:18px;font-weight:normal">Цена по прайс-листу:</h5>
+      <h4 style="text-decoration:none;white-space:nowrap;font-size:22px;font-weight:bold"><label id="viewR_price"></label></h4>
+      <h5 style="white-space:nowrap;font-size:18px;font-weight:bold;"><label id="viewR_status"></label></h5>
+      
+      ]]>
+    </view>
+
+  </views>
+
+  <data>
+<item><uses>Вентилятор</uses><power>0,18 кВт 220B [до 1,14 A]</power><seriesID>132F0001</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>0,37 кВт 380В [до 1,14 A]</power><seriesID>132F0017</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>0,37 кВт 220B [1,15 - 2,10 A]</power><seriesID>132F0002</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>0,75 кВт 380В [1,15 - 2,10 A]</power><seriesID>132F0018</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>1,5 кВт 380В [2,11 - 3,52 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>0,75 кВт 220В [2,11 - 4,00 A]</power><seriesID>132F0003</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>2,2 кВт 380В [3,53 - 5,05 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>1,5 кВт 220В [4,01 - 6,48 A]</power><seriesID>132F0005</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>3 кВт 380В [5,06 - 6,86 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>4 кВт 380В [6,87 - 8,57 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>2,2 кВт 220В [6,49 - 9,14 A]</power><seriesID>132F0007</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>5,5 кВт 380В [8,58 - 11,43 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>7,5 кВт 380В [11,44 - 14,76 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>11 кВт 380В [14,77 - 21,90 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>15 кВт 380В [21,91 - 29,52 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>18,5 кВт 380В [29,53 - 35,24 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>22 кВт 380В [35,25 - 40,48 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Вентилятор</uses><power>30 кВт 380В [40,49 - 58,10 A]</power><seriesID>131L9873</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Вентилятор</uses><power>37 кВт 380В [58,11 - 69,52 A]</power><seriesID>131L9881</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Вентилятор</uses><power>45 кВт 380В [69,53 - 85,71 A]</power><seriesID>131L9889</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Вентилятор</uses><power>55 кВт 380В [85,72 - 100,95 A]</power><seriesID>131L9897</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Вентилятор</uses><power>75 кВт 380В [100,96 - 140,00 A]</power><seriesID>131L9905</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Вентилятор</uses><power>90 кВт 380В [140,01 - 168,57 A]</power><seriesID>131L9913</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Дымосос</uses><power>0,18 кВт 220B [до 1,14 A]</power><seriesID>132F0001</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>0,37 кВт 380В [до 1,14 A]</power><seriesID>132F0017</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>0,37 кВт 220B [1,15 - 2,10 A]</power><seriesID>132F0002</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>0,75 кВт 380В [1,15 - 2,10 A]</power><seriesID>132F0018</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>1,5 кВт 380В [2,11 - 3,52 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>0,75 кВт 220В [2,11 - 4,00 A]</power><seriesID>132F0003</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>2,2 кВт 380В [3,53 - 5,05 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>1,5 кВт 220В [4,01 - 6,48 A]</power><seriesID>132F0005</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>3 кВт 380В [5,06 - 6,86 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>4 кВт 380В [6,87 - 8,57 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>2,2 кВт 220В [6,49 - 9,14 A]</power><seriesID>132F0007</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>5,5 кВт 380В [8,58 - 11,43 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>7,5 кВт 380В [11,44 - 14,76 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>11 кВт 380В [14,77 - 21,90 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>15 кВт 380В [21,91 - 29,52 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>18,5 кВт 380В [29,53 - 35,24 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>22 кВт 380В [35,25 - 40,48 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Дымосос</uses><power>30 кВт 380В [40,49 - 58,10 A]</power><seriesID>131L9873</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Дымосос</uses><power>37 кВт 380В [58,11 - 69,52 A]</power><seriesID>131L9881</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Дымосос</uses><power>45 кВт 380В [69,53 - 85,71 A]</power><seriesID>131L9889</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Дымосос</uses><power>55 кВт 380В [85,72 - 100,95 A]</power><seriesID>131L9897</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Дымосос</uses><power>75 кВт 380В [100,96 - 140,00 A]</power><seriesID>131L9905</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Дымосос</uses><power>90 кВт 380В [140,01 - 168,57 A]</power><seriesID>131L9913</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Центробежный насос</uses><power>0,18 кВт 220B [до 1,14 A]</power><seriesID>132F0001</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>0,37 кВт 380В [до 1,14 A]</power><seriesID>132F0017</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>0,37 кВт 220B [1,15 - 2,10 A]</power><seriesID>132F0002</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>0,75 кВт 380В [1,15 - 2,10 A]</power><seriesID>132F0018</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>1,5 кВт 380В [2,11 - 3,52 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>0,75 кВт 220В [2,11 - 4,00 A]</power><seriesID>132F0003</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>2,2 кВт 380В [3,53 - 5,05 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>1,5 кВт 220В [4,01 - 6,48 A]</power><seriesID>132F0005</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>3 кВт 380В [5,06 - 6,86 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>4 кВт 380В [6,87 - 8,57 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>2,2 кВт 220В [6,49 - 9,14 A]</power><seriesID>132F0007</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>5,5 кВт 380В [8,58 - 11,43 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>7,5 кВт 380В [11,44 - 14,76 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>11 кВт 380В [14,77 - 21,90 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>15 кВт 380В [21,91 - 29,52 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>18,5 кВт 380В [29,53 - 35,24 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>22 кВт 380В [35,25 - 40,48 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Центробежный насос</uses><power>30 кВт 380В [40,49 - 58,10 A]</power><seriesID>131L9873</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Центробежный насос</uses><power>37 кВт 380В [58,11 - 69,52 A]</power><seriesID>131L9881</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Центробежный насос</uses><power>45 кВт 380В [69,53 - 85,71 A]</power><seriesID>131L9889</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Центробежный насос</uses><power>55 кВт 380В [85,72 - 100,95 A]</power><seriesID>131L9897</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Центробежный насос</uses><power>75 кВт 380В [100,96 - 140,00 A]</power><seriesID>131L9905</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Центробежный насос</uses><power>90 кВт 380В [140,01 - 168,57 A]</power><seriesID>131L9913</seriesID><panelID>132B0200</panelID></item>
+<item><uses>Поршневой насос</uses><power>0,18 кВт 220B [до 0,77 A]</power><seriesID>132F0001</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>0,37 кВт 380В [до 0,77 A]</power><seriesID>132F0017</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>0,37 кВт 220B [0,78 - 1,42 A]</power><seriesID>132F0002</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>0,75 кВт 380В [0,78 - 1,42 A]</power><seriesID>132F0018</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>1,5 кВт 380В [1,43 - 2,39 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>0,75 кВт 220В [0,78 - 2,71 A]</power><seriesID>132F0003</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>2,2 кВт 380В [2,40 - 3,42 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>1,5 кВт 220В [2,72 - 4,39 A]</power><seriesID>132F0005</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>3 кВт 380В [3,43 - 4,65 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>4 кВт 380В [4,66 - 5,81 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>2,2 кВт 220В [4,40 - 6,19 A]</power><seriesID>132F0007</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>5,5 кВт 380В [5,82 - 7,74 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>7,5 кВт 380В [7,75 - 10,00 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>11 кВт 380В [10,01 - 14,84 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>15 кВт 380В [14,85 - 20,00 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>18,5 кВт 380В [20,01 - 23,87 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Поршневой насос</uses><power>22 кВт 380В [23,88 - 27,42 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>1,5 кВт 380В [до 3,70 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>2,2 кВт 380В [3,71 - 5,30 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>3 кВт 380В [5,31 - 7,20 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>4 кВт 380В [7,21 - 9,00 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>5,5 кВт 380В [9,01 - 12,00 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>7,5 кВт 380В [12,01 - 15,50 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>11 кВт 380В [15,51 - 23,00 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>15 кВт 380В [23,01 - 31,00 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>18,5 кВт 380В [31,01 - 37,00 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>22 кВт 380В [37,01 - 42,50 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>30 кВт 380В [42,51 - 44,73 A]</power><seriesID>134F8788</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>37 кВт 380В [44,74 - 53,53 A]</power><seriesID>134F8798</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>45 кВт 380В [53,54 - 66,00 A]</power><seriesID>134F8804</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>55 кВт 380В [66,01 - 77,73 A]</power><seriesID>134F8812</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>75 кВт 380В [77,74 - 107,80 A]</power><seriesID>134F8820</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор винтовой</uses><power>90 кВт 380В [107,81 - 129,80 A]</power><seriesID>134F8828</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>1,5 кВт 380В [до 3,70 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>2,2 кВт 380В [3,71 - 5,30 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>3 кВт 380В [5,31 - 7,20 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>4 кВт 380В [7,21 - 9,00 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>5,5 кВт 380В [9,01 - 12,00 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>7,5 кВт 380В [12,01 - 15,50 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>11 кВт 380В [15,51 - 23,00 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>15 кВт 380В [23,01 - 31,00 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>18,5 кВт 380В [31,01 - 37,00 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>22 кВт 380В [37,01 - 42,50 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>30 кВт 380В [42,51 - 44,73 A]</power><seriesID>134F8788</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>37 кВт 380В [44,74 - 53,53 A]</power><seriesID>134F8798</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>45 кВт 380В [53,54 - 66,00 A]</power><seriesID>134F8804</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>55 кВт 380В [66,01 - 77,73 A]</power><seriesID>134F8812</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>75 кВт 380В [77,74 - 107,80 A]</power><seriesID>134F8820</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор спиральный</uses><power>90 кВт 380В [107,81 - 129,80 A]</power><seriesID>134F8828</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>1,5 кВт 380В [до 2,78 A]</power><seriesID>132F0020</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>2,2 кВт 380В [2,79 - 3,98 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>3 кВт 380В [3,99 - 5,40 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>4 кВт 380В [5,41 - 6,75 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>5,5 кВт 380В [6,76 - 9,00 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>7,5 кВт 380В [9,01 - 11,63 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>11 кВт 380В [11,64 - 17,25 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>15 кВт 380В [17,26 - 23,25 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>18,5 кВт 380В [23,26 - 27,75 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 2 поршня</uses><power>22 кВт 380В [27,76 - 31,88 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>1,5 кВт 380В [до 3,83 A]</power><seriesID>132F0022</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>2,2 кВт 380В [3,84 - 5,48 A]</power><seriesID>132F0024</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>3 кВт 380В [5,49 - 7,45 A]</power><seriesID>132F0026</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>4 кВт 380В [7,46 - 9,31 A]</power><seriesID>132F0028</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>5,5 кВт 380В [9,32 - 12,41 A]</power><seriesID>132F0030</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>7,5 кВт 380В [12,42 - 16,03 A]</power><seriesID>132F0058</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>11 кВт 380В [16,04 - 23,79 A]</power><seriesID>132F0059</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>15 кВт 380В [23,8 - 32, 07 A]</power><seriesID>132F0060</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>18,5 кВт 380В [32,08 - 38,28 A]</power><seriesID>132F0061</seriesID><panelID>132B0101</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>30 кВт 380В [38,29 - 46,28 A]</power><seriesID>134F8788</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>37 кВт 380В [46,29 - 55,38 A]</power><seriesID>134F8798</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>45 кВт 380В [55,39 - 68,28 A]</power><seriesID>134F8804</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>55 кВт 380В [68,29 - 80,41 A]</power><seriesID>134F8812</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>75 кВт 380В [80,42 - 111,52 A]</power><seriesID>134F8820</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 4 поршня</uses><power>90 кВт 380В [111,53 - 134,28 A]</power><seriesID>134F8828</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 6 поршней</uses><power>30 кВт 380В [до 55,92 A]</power><seriesID>134F8788</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 6 поршней</uses><power>37 кВт 380В [55,93 - 66,92 A]</power><seriesID>134F8798</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 6 поршней</uses><power>45 кВт 380В [66,93 - 82,50 A]</power><seriesID>134F8804</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 6 поршней</uses><power>55 кВт 380В [82,55 - 97,17 A]</power><seriesID>134F8812</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 6 поршней</uses><power>75 кВт 380В [97,18 - 134,75 A]</power><seriesID>134F8820</seriesID><panelID>130B1107</panelID></item>
+<item><uses>Компрессор 6 поршней</uses><power>90 кВт 380В [134,76 - 162,25 A]</power><seriesID>134F8828</seriesID><panelID>130B1107</panelID></item>
+  </data>
+
+  <div class="text-error" id="res"></div>
+</body>

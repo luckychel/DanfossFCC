@@ -1,0 +1,133 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Danfoss FCC</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.mobile-1.1.0.min.js"></script>
+    <script type="text/javascript" src="dancfgr.js"></script>
+    <script type="text/javascript">
+
+        //Когда страница загрузится проинициализировать конфигуратор
+        $.mobile.autoInitializePage = false;
+        $.mobile.selectmenu.prototype.options.nativeMenu = true;
+        $.mobile.touchOverflowEnabled = false;
+        $.mobile.pushStateEnabled = true;
+
+        var logError = function (s) {
+            $('#res').html($('#res').html() + "<br />" + s);
+        }
+
+        function initPage(file) {
+            try {
+                var $this = this;
+                NativeFunc("getFileData", file, function (data) {
+
+                    $this.language = data[1].toString();
+                    $this.platform = data[2].toString();
+
+                    var cfg = new dancfgr();
+                    cfg.init.call(cfg, data[0].toString());
+                    $.mobile.initializePage();
+
+                });
+            } catch (e) {
+                logError(e);
+            }
+        }
+
+        function getDanfossData(params, $this) {
+
+            try {
+
+                NativeFunc("getDanfossData", params, function (result) {
+
+                    if (params.method == "authP") {
+
+                        if (result.toString().indexOf("OK") > 0) {
+                            $this.online();
+                        }
+                        else {
+                            $this.offline();
+                        }
+
+                    } else if (params.method == "stockP") {
+
+                        var data = JSON.parse(result.toString());
+
+                        $("#results_loader").hide();
+                        $("#query_results").show();
+
+                        $("#query_results").find('#viewR_material').text(data.Material);
+                        $("#query_results").find('#viewR_price').text(data.Price);
+                        $("#query_results").find('#viewR_status').text(data.Status);
+                        $("#query_results").find('#viewR_status').css("color", data.Color)
+                    
+                    } else if (params.method == "checkP") {
+
+                        var data = JSON.parse(result.toString());
+
+                        if (data[1] != "0") {
+
+                            $('#btnOrder').removeClass('ui-disabled');
+
+                            if (language == "ru") {
+                                $("#popupdata").empty().append("<h4>Пожалуйста укажите необходимое кол-во и заполните ваши контактные данные</h4>").append(data[0]).unbind("click").bind("click", function () { $('#btnTwo').click(); });
+                                $("#popupheader").empty().append("<font>Ошибка!</font>").css("color", "#EE4433");
+                            } else {
+                                $("#popupdata").empty().append("<h4>Please select the quantity and fill your personal contact information.</h4>").append(data[0]).unbind("click").bind("click", function () { $('#btnTwo').click(); });
+                                $("#popupheader").empty().append("<font>Warning!</font>").css("color", "#EE4433");
+                            }
+
+                            $("#btnPopup").click();
+                        }
+                        else {
+                            try {
+                                var jsonRequestParams = {
+                                    method: 'orderP',
+                                    param: 'power=' + $("#viewV_power").text() +
+                                        '&uses=' + $('#uses')[0].value +
+                                        '&material=' + $("#viewV_seriesID").text() +
+                                        '&type=1'  +
+                                        '&qty=' + $("#query_results").find("#slider")[0].value +
+                                        '&name=' + $("#query_results").find("#username")[0].value +
+                                        '&tel=' + $("#query_results").find("#phonenumber")[0].value +
+                                        '&mail=' + $("#query_results").find("#emailaddres")[0].value +
+                                        '&guid=' + GUID
+                                };
+                                getDanfossData(jsonRequestParams, $this);
+                            } catch (ex) { }
+                        }
+
+                    } else if (params.method == "orderP") {
+
+                        $("#btnThree").click();
+                        $('#btnOrder').removeClass('ui-disabled');
+
+                    }
+
+                });
+            }
+            catch (e) {
+                logError(e);
+            }
+        }
+
+        var ready = function () {
+
+            window.setTimeout(function () {
+
+                var file = "PEData_{0}.xml";
+                initPage(file);
+
+            }, 100);
+        };
+
+        document.addEventListener("DOMContentLoaded", ready);
+
+    </script>
+    <link type="text/css" rel="Stylesheet" href="jquery/jquery.mobile-1.1.0.min.css" />
+    <link type="text/css" rel="Stylesheet" href="style.css" />
+</head>
+<body></body>
+</html>

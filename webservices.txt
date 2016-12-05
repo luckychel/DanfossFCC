@@ -1,0 +1,6 @@
+
+http://rucoecom.danfoss.com/ExtDS/jDS.asmx/authP?jsoncallback=&guid=8DC39460D49A4F1091EBE3F61D004997
+http://rucoecom.danfoss.com/ExtDS/jDS.asmx/stockP?material=132F0026&guid=8DC39460D49A4F1091EBE3F61D004997&lang=en&jsoncallback=
+http://rucoecom.danfoss.com/ExtDS/jDS.asmx/checkP?jsoncallback=&qty=10&name=alex&tel=872173&mail=alex@alex.ru&guid=8DC39460D49A4F1091EBE3F61D004997&lang=en
+
+http://127.0.0.1:1337/sdf
